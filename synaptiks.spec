@@ -1,6 +1,6 @@
 %define name	synaptiks
 %define version	0.3.2
-%define release	%mkrel 1
+%define release	%mkrel 2
 %define Summary	Touchpad service for KDE 4
 
 
@@ -45,7 +45,7 @@ on keyboard activity or if mouse devices are plugged.
 %setup -q 
 
 %build
-%cmake_kde4
+%cmake_kde4 -DHAVE_XINPUT2=ON 
 %make
 
 %install
