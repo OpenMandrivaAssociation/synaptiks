@@ -1,6 +1,6 @@
 %define name	synaptiks
-%define version	0.3.2
-%define release	%mkrel 2
+%define version	0.4.0
+%define release	%mkrel 1
 %define Summary	Touchpad service for KDE 4
 
 
