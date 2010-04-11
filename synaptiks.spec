@@ -29,9 +29,10 @@ on keyboard activity or if mouse devices are plugged.
 %_kde_datadir/apps/%{name}/
 %_kde_datadir/config.kcfg/plasma-applet-synaptiks.kcfg
 %_kde_datadir/config.kcfg/synaptiks.kcfg
-%_kde_datadir/dbus-1/interfaces/de.lunaryorn.MouseDevicesMonitor.xml
-%_kde_datadir/dbus-1/interfaces/de.lunaryorn.Synaptiks.xml
-%_kde_datadir/dbus-1/interfaces/de.lunaryorn.TouchpadManager.xml
+%_kde_datadir/dbus-1/interfaces/org.kde.Synaptiks.xml
+%_kde_datadir/dbus-1/interfaces/org.kde.TouchpadManager.xml
+%_kde_datadir/dbus-1/interfaces/org.kde.MouseDevicesMonitor.xml
+%_kde_datadir/dbus-1/interfaces/org.kde.Touchpad.xml
 %_kde_iconsdir/hicolor/scalable/apps/synaptiks.svgz
 %_kde_services/kded/%{name}.desktop
 %_kde_services/plasma-applet-synaptiks.desktop
