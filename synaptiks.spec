@@ -1,6 +1,6 @@
 %define name	synaptiks
 %define version	0.4.0
-%define release	%mkrel 1
+%define release	%mkrel 2
 %define Summary	Touchpad service for KDE 4
 
 
@@ -13,6 +13,9 @@ License:	BSD
 Group:		System/Configuration/Hardware
 URL:		http://synaptiks.lunaryorn.de/
 BuildRequires:	kdelibs4-devel
+
+# (bor) cherry pick two finger emulation from SVN
+Patch0:		synaptiks-0.4.0-two_fingers_emulation.patch
 
 
 %description
@@ -44,6 +47,7 @@ on keyboard activity or if mouse devices are plugged.
 
 %prep
 %setup -q 
+%patch0 -p1
 
 %build
 %cmake_kde4 -DHAVE_XINPUT2=ON 
