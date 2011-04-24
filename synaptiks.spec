@@ -1,61 +1,52 @@
 %define name	synaptiks
-%define version	0.4.0
-%define release	%mkrel 2
+%define version	0.6.1
+%define release	%mkrel 1
 %define Summary	Touchpad service for KDE 4
-
 
 Summary:	%Summary
 Name:		%name
 Version:	%version
 Release:	%release
-Source0:	%name-%version.tar.bz2
+Source0:	http://pypi.python.org/packages/source/s/synaptiks/%name-%version.tar.bz2
 License:	BSD
 Group:		System/Configuration/Hardware
 URL:		http://synaptiks.lunaryorn.de/
-BuildRequires:	kdelibs4-devel
-
-# (bor) cherry pick two finger emulation from SVN
-Patch0:		synaptiks-0.4.0-two_fingers_emulation.patch
-
+BuildArch:	noarch
+BuildRequires:	python-devel
+BuildRequires:	python-setuptools
+BuildRequires:	kdelibs4-core
+BuildRequires:	kde4-macros
+BuildRequires:	kdesdk4-scripts
+Requires:	python-kde4
+Requires:	pyudev
 
 %description
 Synaptiks is a touchpad management service for KDE. It provides a simple
 configuration interface and can automatically switch off your touchpad
 on keyboard activity or if mouse devices are plugged.
 
-
 %files -f %{name}.lang
 %defattr(-,root,root)
-%_kde_libdir/kde4/kcm_synaptiks.so
-%_kde_libdir/kde4/kded_synaptiks.so
-%_kde_libdir/kde4/plasma_applet_synaptiks.so
-%_kde_datadir/apps/%{name}/
-%_kde_datadir/config.kcfg/plasma-applet-synaptiks.kcfg
-%_kde_datadir/config.kcfg/synaptiks.kcfg
-%_kde_datadir/dbus-1/interfaces/org.kde.Synaptiks.xml
-%_kde_datadir/dbus-1/interfaces/org.kde.TouchpadManager.xml
-%_kde_datadir/dbus-1/interfaces/org.kde.MouseDevicesMonitor.xml
-%_kde_datadir/dbus-1/interfaces/org.kde.Touchpad.xml
-%_kde_iconsdir/hicolor/scalable/apps/synaptiks.svgz
-%_kde_services/kded/%{name}.desktop
-%_kde_services/plasma-applet-synaptiks.desktop
-%_kde_services/%{name}.desktop
-
-
+%{_sysconfdir}/xdg/autostart/synaptiks_init_config.desktop
+%{_bindir}/*
+%{py_puresitedir}/*
+%{_datadir}/applications/kde4/*.desktop
+%{_kde_services}/*.desktop
+%{_datadir}/autostart/*.desktop
+%{_kde_appsdir}/%name
+%{_iconsdir}/hicolor/*/*/*
 
 #---------------------------------------------------------------------
 
 %prep
 %setup -q 
-%patch0 -p1
 
 %build
-%cmake_kde4 -DHAVE_XINPUT2=ON 
-%make
+python setup.py build
 
 %install
 %__rm -rf %buildroot
-%makeinstall_std -C build
+python setup.py install --root=%{buildroot}
 
 %find_lang %{name} --with-html
 
