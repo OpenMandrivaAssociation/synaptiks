@@ -12,11 +12,11 @@ License:	BSD
 Group:		System/Configuration/Hardware
 URL:		http://synaptiks.lunaryorn.de/
 BuildArch:	noarch
-BuildRequires:	python-devel
 BuildRequires:	python-setuptools
 BuildRequires:	kdelibs4-core
 BuildRequires:	kde4-macros
 BuildRequires:	kdesdk4-scripts
+Obsoletes:	%{name} < %{version}
 Requires:	python-kde4
 Requires:	pyudev
 
