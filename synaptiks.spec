@@ -1,6 +1,6 @@
 %define name	synaptiks
-%define version	0.6.1
-%define release	%mkrel 1
+%define version	0.8.1
+%define release	1
 %define Summary	Touchpad service for KDE 4
 
 Summary:	%Summary
@@ -35,9 +35,7 @@ on keyboard activity or if mouse devices are plugged.
 %{_datadir}/autostart/*.desktop
 %{_kde_appsdir}/%name
 %{_iconsdir}/hicolor/*/*/*
-
 #---------------------------------------------------------------------
-
 %prep
 %setup -q 
 
@@ -45,11 +43,6 @@ on keyboard activity or if mouse devices are plugged.
 python setup.py build
 
 %install
-%__rm -rf %buildroot
 python setup.py install --root=%{buildroot}
 
 %find_lang %{name} --with-html
-
-%clean
-%__rm -rf %buildroot
- 
