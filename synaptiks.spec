@@ -10,7 +10,7 @@ Release:	%release
 Source0:	http://pypi.python.org/packages/source/s/synaptiks/%name-%version.tar.bz2
 License:	BSD
 Group:		System/Configuration/Hardware
-URL:		http://synaptiks.lunaryorn.de/
+URL:		https://synaptiks.lunaryorn.de/
 BuildArch:	noarch
 BuildRequires:	python-setuptools
 BuildRequires:	kdelibs4-core
